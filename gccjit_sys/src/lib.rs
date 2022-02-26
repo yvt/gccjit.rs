@@ -274,6 +274,8 @@ extern {
     pub fn gcc_jit_context_set_bool_option(ctx: *mut gcc_jit_context,
                                            option: gcc_jit_bool_option,
                                            value: c_int);
+    pub fn gcc_jit_context_set_bool_allow_unreachable_blocks(ctx: *mut gcc_jit_context,
+                                                             value: c_int);
     pub fn gcc_jit_context_compile(ctx: *mut gcc_jit_context) -> *mut gcc_jit_result;
     pub fn gcc_jit_context_compile_to_file(ctx: *mut gcc_jit_context,
                                            kind: gcc_jit_output_kind,
