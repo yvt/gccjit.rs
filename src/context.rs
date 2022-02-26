@@ -240,6 +240,12 @@ impl<'ctx> Context<'ctx> {
         }
     }
 
+    pub fn set_allow_unreachable_blocks(&self, value: bool) {
+        unsafe {
+            gccjit_sys::gcc_jit_context_set_bool_allow_unreachable_blocks(self.ptr, value as i32);
+        }
+    }
+
     /// Compiles the context and returns a CompileResult that contains
     /// the means to access functions and globals that have currently
     /// been JIT compiled.
