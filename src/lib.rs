@@ -38,6 +38,7 @@ pub use context::OutputKind;
 pub use location::Location;
 pub use object::Object;
 pub use object::ToObject;
+pub use types::FunctionPtrType;
 pub use types::Type;
 pub use types::Typeable;
 pub use field::Field;
