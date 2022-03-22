@@ -896,6 +896,22 @@ impl<'ctx> Context<'ctx> {
         }
     }
 
+    pub fn new_vector_access<'a>(&'a self, loc: Option<Location<'a>>, vector: RValue<'a>, index: RValue<'a>) -> LValue<'a> {
+        unsafe {
+            let loc_ptr = match loc {
+                Some(loc) => location::get_ptr(&loc),
+                None => ptr::null_mut()
+            };
+
+            let ptr = gccjit_sys::gcc_jit_context_new_vector_access(self.ptr, loc_ptr, rvalue::get_ptr(&vector), rvalue::get_ptr(&index));
+            #[cfg(debug_assertions)]
+            if let Ok(Some(error)) = self.get_last_error() {
+                panic!("{}", error);
+            }
+            lvalue::from_ptr(ptr)
+        }
+    }
+
     /// Creates a new RValue from a given int value.
     pub fn new_rvalue_from_int<'a>(&'a self,
                                    ty: types::Type<'a>,

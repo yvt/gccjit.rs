@@ -581,4 +581,5 @@ extern {
 
     pub fn gcc_jit_context_new_rvalue_vector_perm(ctxt: *mut gcc_jit_context, loc: *mut gcc_jit_location, elements1: *mut gcc_jit_rvalue, elements2: *mut gcc_jit_rvalue, mask: *mut gcc_jit_rvalue) -> *mut gcc_jit_rvalue;
     pub fn gcc_jit_context_new_vector_constructor(ctxt: *mut gcc_jit_context, loc: *mut gcc_jit_location, typ: *mut gcc_jit_type, num_values: size_t, values: *mut *mut gcc_jit_rvalue) -> *mut gcc_jit_rvalue;
+    pub fn gcc_jit_context_new_vector_access(ctxt: *mut gcc_jit_context, loc: *mut gcc_jit_location, vector: *mut gcc_jit_rvalue, index: *mut gcc_jit_rvalue) -> *mut gcc_jit_lvalue;
 }
