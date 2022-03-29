@@ -105,6 +105,12 @@ impl<'ctx> Type<'ctx> {
         }
     }
 
+    pub fn set_packed(&self) {
+        unsafe {
+            gccjit_sys::gcc_jit_type_set_packed(self.ptr);
+        }
+    }
+
     /// Given a type T, creates a type of const T.
     pub fn make_const(self) -> Type<'ctx> {
         unsafe {
