@@ -8,5 +8,8 @@ keywords = ["compiler", "jit", "gcc"]
 license = "GPL-3.0"
 repository = "https://github.com/swgillespie/gccjit.rs"
 
+[features]
+master = []
+
 [dependencies]
 libc = "0.1.6"
