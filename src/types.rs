@@ -105,6 +105,7 @@ impl<'ctx> Type<'ctx> {
         }
     }
 
+    #[cfg(feature="master")]
     pub fn set_packed(&self) {
         unsafe {
             gccjit_sys::gcc_jit_type_set_packed(self.ptr);

@@ -827,6 +827,7 @@ impl<'ctx> Context<'ctx> {
         }
     }
 
+    #[cfg(feature="master")]
     pub fn new_rvalue_vector_perm<'a>(&'a self, loc: Option<Location<'a>>, elements1: RValue<'a>, elements2: RValue<'a>, mask: RValue<'a>) -> RValue<'a> {
         unsafe {
             let loc_ptr = match loc {
@@ -880,6 +881,7 @@ impl<'ctx> Context<'ctx> {
         }
     }
 
+    #[cfg(feature="master")]
     pub fn new_vector_constructor<'a>(&'a self, loc: Option<Location<'a>>, vector_type: types::Type<'a>, elements: &[RValue<'a>]) -> RValue<'a> {
         unsafe {
             let loc_ptr = match loc {
@@ -896,6 +898,7 @@ impl<'ctx> Context<'ctx> {
         }
     }
 
+    #[cfg(feature="master")]
     pub fn new_vector_access<'a>(&'a self, loc: Option<Location<'a>>, vector: RValue<'a>, index: RValue<'a>) -> LValue<'a> {
         unsafe {
             let loc_ptr = match loc {
@@ -1082,6 +1085,7 @@ impl<'ctx> Context<'ctx> {
         }
     }
 
+    #[cfg(feature="master")]
     /// Get a target-dependant builtin function from gcc. It's not clear what functions are
     /// builtin and you'll likely need to consult the GCC internal docs
     /// for a full list.
