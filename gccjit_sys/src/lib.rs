@@ -589,4 +589,7 @@ extern {
 
     #[cfg(feature="master")]
     pub fn gcc_jit_type_set_packed(typ: *mut gcc_jit_type);
+
+    #[cfg(feature="master")]
+    pub fn gcc_jit_type_is_const(typ: *mut gcc_jit_type) -> *mut gcc_jit_type;
 }
