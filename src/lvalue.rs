@@ -140,6 +140,12 @@ impl<'ctx> LValue<'ctx> {
         }
     }
 
+    pub fn global_set_readonly(&self) {
+        unsafe {
+            gccjit_sys::gcc_jit_global_set_readonly(self.ptr);
+        }
+    }
+
     pub fn set_register_name(&self, reg_name: &str) {
         let name = CString::new(reg_name).unwrap();
         unsafe {

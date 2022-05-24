@@ -915,6 +915,22 @@ impl<'ctx> Context<'ctx> {
         }
     }
 
+    #[cfg(feature="master")]
+    pub fn convert_vector<'a>(&'a self, loc: Option<Location<'a>>, vector: RValue<'a>, type_: Type<'a>) -> RValue<'a> {
+        unsafe {
+            let loc_ptr = match loc {
+                Some(loc) => location::get_ptr(&loc),
+                None => ptr::null_mut()
+            };
+            let ptr = gccjit_sys::gcc_jit_context_convert_vector(self.ptr, loc_ptr, rvalue::get_ptr(&vector), types::get_ptr(&type_));
+            #[cfg(debug_assertions)]
+            if let Ok(Some(error)) = self.get_last_error() {
+                panic!("{}", error);
+            }
+            rvalue::from_ptr(ptr)
+        }
+    }
+
     /// Creates a new RValue from a given int value.
     pub fn new_rvalue_from_int<'a>(&'a self,
                                    ty: types::Type<'a>,

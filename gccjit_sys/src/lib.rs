@@ -592,4 +592,10 @@ extern {
 
     #[cfg(feature="master")]
     pub fn gcc_jit_type_is_const(typ: *mut gcc_jit_type) -> *mut gcc_jit_type;
+
+    #[cfg(feature="master")]
+    pub fn gcc_jit_context_convert_vector(ctxt: *mut gcc_jit_context, loc: *mut gcc_jit_location, vector: *mut gcc_jit_rvalue, type_: *mut gcc_jit_type) -> *mut gcc_jit_rvalue;
+
+    #[cfg(feature="master")]
+    pub fn gcc_jit_global_set_readonly(global: *mut gcc_jit_lvalue);
 }
