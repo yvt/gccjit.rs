@@ -140,6 +140,7 @@ impl<'ctx> LValue<'ctx> {
         }
     }
 
+    #[cfg(feature="master")]
     pub fn global_set_readonly(&self) {
         unsafe {
             gccjit_sys::gcc_jit_global_set_readonly(self.ptr);
